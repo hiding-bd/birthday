@@ -1,0 +1,235 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500&family=Orbitron:wght@400;700&display=swap');
+
+body {
+    background: #0b0f19;
+    color: #00d4ff;
+    font-family: 'Rajdhani', sans-serif;
+    text-align: center;
+    padding: 20px;
+    overflow: auto;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px); /* Лёгкий подъём при появлении */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Голографическая сетка */
+.holo-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.2;
+    animation: gridMove 5s linear infinite;
+    z-index: -3;
+}
+
+@keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: -50px -50px; }
+}
+
+/* Сканирующая волна */
+.scan-wave {
+    position: fixed;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 0) 100%);
+    animation: scanMove 4s infinite linear;
+    z-index: -2;
+}
+
+@keyframes scanMove {
+    0% { top: -50px; }
+    100% { top: 100%; }
+}
+
+/* Усиленные вспышки */
+.spark {
+    position: fixed;
+    width: 7px;
+    height: 7px;
+    background: rgba(0, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: sparkMove 1.5s infinite linear alternate;
+    z-index: -1;
+}
+
+@keyframes sparkMove {
+    0% { transform: translateY(-20px) scale(0.7); opacity: 0.6; }
+    50% { transform: translateY(20px) scale(1.2); opacity: 1; }
+    100% { transform: translateY(-20px) scale(0.7); opacity: 0.6; }
+}
+
+/* Дополнительные вспышки в разных местах */
+.spark-1 { top: 10%; left: 30%; animation-delay: 0.3s; }
+.spark-2 { top: 25%; left: 60%; animation-delay: 0.6s; }
+.spark-3 { top: 50%; left: 15%; animation-delay: 0.9s; }
+.spark-4 { top: 75%; left: 80%; animation-delay: 1.2s; }
+.spark-5 { top: 90%; left: 50%; animation-delay: 1.5s; }
+
+/* Дрожащий свет (для текстов) */
+.flicker {
+    animation: flickerLight 1.5s infinite alternate;
+}
+
+@keyframes flickerLight {
+    0% { opacity: 0; }
+    50% { opacity: 0.85; }
+    100% { opacity: 1; }
+}
+
+
+.holo-glow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 10%, rgba(0, 255, 255, 0) 50%);
+    z-index: -2;
+    animation: holoPulse 4s infinite alternate;
+}
+
+/* Плавный эффект пульсации */
+@keyframes holoPulse {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.4; }
+    100% { opacity: 0.3; }
+}
+
+
+/* Анимация сетки (медленное движение, создающее глубину) */
+@keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: -60px -60px; }
+}
+
+/* Эффект мерцания */
+@keyframes gridGlow {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.55; }
+    100% { opacity: 0.45; }
+}
+
+/* Разорванные голографические фигуры */
+.glitch-polygons {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+}
+
+.glitch-polygons div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 255, 255, 0.3);
+    clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+    animation: polygonMove 5s infinite linear alternate;
+}
+
+.glitch-polygons .poly-1 { top: 0; left: 20px; animation-delay: 0.5s; }
+.glitch-polygons .poly-2 { top: 120px; left: 80px; animation-delay: 1s; }
+.glitch-polygons .poly-3 { top: 240px; left: 40px; animation-delay: 1.5s; }
+
+@keyframes polygonMove {
+    0% { transform: translateY(-10px) rotate(2deg); opacity: 0.7; }
+    50% { transform: translateY(10px) rotate(-2deg); opacity: 0.9; }
+    100% { transform: translateY(-10px) rotate(2deg); opacity: 0.7; }
+}
+
+@keyframes scanlines {
+    0% { transform: translateY(0px) scaleX(1.1); opacity: 0.3; }
+    50% { transform: translateY(5px) scaleX(1.2); opacity: 0.6; }
+    100% { transform: translateY(0px) scaleX(1.1); opacity: 0.3; }
+}
+
+.glitch-image {
+    max-width: 250px; /* Уменьшаем размер изображения */
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    filter: contrast(1.2) brightness(1.1) drop-shadow(0px 0px 10px rgba(0, 255, 255, 0.8));
+    animation: glitch-flicker 2.5s infinite alternate, glitch-shift 0.2s infinite;
+}
+
+@keyframes glitch-flicker {
+    0% { opacity: 0.9; transform: scale(1.01); }
+    50% { opacity: 0.8; transform: scale(1.02) skewX(0.5deg); }
+    100% { opacity: 0.9; transform: scale(1.01); }
+}
+
+#codeEntryBox {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#codeInputContainer {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#accessCodeInput {
+    background: #121212;
+    border: 1px solid #7dd87d;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 16px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+#submitCode {
+    background: #7dd87d;
+    border: none;
+    color: #121212;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#submitCode:hover {
+    background: #62b6cb;
+}
+
+.error-message {
+    color: #ff4d4d;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hidden-answer {
+    display: none;
+}
+
+.system-message {
+    color: #d4af37; /* Золотистый цвет для системных сообщений */
+    font-weight: bold;
+}
+

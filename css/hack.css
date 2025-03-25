@@ -1,0 +1,218 @@
+﻿body {
+    background-color: #121212; /* Темный фон */
+    color: #ffffff; /* Белый текст */
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Разрешаем прокрутку вверх и вниз */
+} 
+
+/* Сканирующая волна */
+.scan-wave {
+    position: fixed;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 0) 100%);
+    animation: scanMove 4s infinite linear;
+    z-index: -2;
+}
+
+@keyframes scanMove {
+    0% { top: -50px; }
+    100% { top: 100%; }
+}
+
+/* Усиленные вспышки */
+.spark {
+    position: fixed;
+    width: 7px;
+    height: 7px;
+    background: rgba(0, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: sparkMove 1.5s infinite linear alternate;
+    z-index: -1;
+}
+
+@keyframes sparkMove {
+    0% { transform: translateY(-20px) scale(0.7); opacity: 0.6; }
+    50% { transform: translateY(20px) scale(1.2); opacity: 1; }
+    100% { transform: translateY(-20px) scale(0.7); opacity: 0.6; }
+}
+
+@keyframes scanlines {
+    0% { transform: translateY(0px) scaleX(1.1); opacity: 0.3; }
+    50% { transform: translateY(5px) scaleX(1.2); opacity: 0.6; }
+    100% { transform: translateY(0px) scaleX(1.1); opacity: 0.3; }
+}
+
+.warning {
+    text-align: center;
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0.3; }
+}
+
+#chatBox {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.system-message, .hacker-message, .data-point {
+    width: 100%;
+    text-align: justify !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    align-self: flex-start;
+    margin: 5px 0;
+    min-height: 1.2em;
+    visibility: hidden;
+    position: relative; /* Нужно для позиционирования курсора */
+}
+
+.visible-text {
+    display: inline-block;
+    word-wrap: break-word; /* Обеспечиваем перенос строк */
+    overflow-wrap: break-word;
+    white-space: pre-wrap; /* Гарантируем перенос строк */
+}
+
+.cursor {
+    display: inline-block;
+    vertical-align: baseline; /* Гарантируем, что курсор остаётся на уровне текста */
+    color: #0ff;
+    animation: blink-caret 0.75s step-end infinite;
+    margin-left: 2px; /* Минимальный отступ, чтобы не "липло" к тексту */
+}
+
+
+@keyframes blink-caret {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+.system-message {
+    color: #d4af37; /* Золотистый цвет для системных сообщений */
+    font-weight: bold;
+}
+
+.hacker-message {
+    color: #7dd87d; /* Мягкий зелёный цвет для сообщений "хакера" */
+    font-style: italic;
+}
+
+.data-point {
+    color: #62b6cb; /* Спокойный голубой цвет для данных */
+}
+
+.hidden {
+    opacity: 0;
+    display: block;
+}
+
+.typing {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #0ff;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #0ff; }
+}
+
+
+#answerBox {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    opacity: 1;
+    visibility: visible;
+}
+
+#inputContainer {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+}
+/* Добавляем эффект плавного появления */
+.fade-in {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.hidden-answer {
+    display: none;
+}
+
+#answerInput {
+    background: #121212;
+    border: 1px solid #7dd87d;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 16px;
+    flex-grow: 1;
+}
+
+#submitAnswer {
+    background: #7dd87d;
+    border: none;
+    color: #121212;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#submitAnswer:hover {
+    background: #62b6cb;
+}
+
+#resultMessage {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Стили для правильного и неправильного ответа */
+.correct-answer {
+    color: #7dd87d;
+    background: rgba(125, 216, 125, 0.1);
+    border-left: 3px solid #7dd87d;
+}
+
+.wrong-answer {
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.1);
+    border-left: 3px solid #ff4d4d;
+}
+
