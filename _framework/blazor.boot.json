@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "HappyBirthday",
   "resources": {
-    "hash": "sha256-kZAZkF2ArgVUCgPFcSTBpWPYTchwlOBUSKmJL0PPIqE=",
+    "hash": "sha256-0lb1QfJa3SxW7sqeeHGqBwfUcOyLG00Sw9dCkt0bQjw=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-VdKq87/z5NIxZKmuM+fv38XF+RcEb/bg3jVBwQSfwP4="
     },
@@ -18,9 +18,9 @@
     },
     "coreAssembly": {},
     "assembly": {
-      "HappyBirthday.wasm": "sha256-qPCTBi9wKKtcKV6xeUpbr+xlDKyR6RPobkYsFkZtV6I=",
-      "Microsoft.AspNetCore.Components.wasm": "sha256-lAO2Aeje2Wc+azX8s+c6W+qJdFocyBR45LKO/nOV/Ls=",
-      "Microsoft.AspNetCore.Components.Web.wasm": "sha256-3wr/5sNjCNucyBg2RNmkT9HzW7cUQQAWehhleMOzSyE=",
+      "HappyBirthday.wasm": "sha256-2WqjKHSSihU3XkwpL2KjhQKZc6QGNHn/U9YVA54Y8u4=",
+      "Microsoft.AspNetCore.Components.wasm": "sha256-JXFXdqevknnxSqvyMVbeqRy2lVyUpEVuArpjC11pgfk=",
+      "Microsoft.AspNetCore.Components.Web.wasm": "sha256-Twam2jc0x2o2BN0Ksscd9QHs/bv35V+r4CIoa5M/CGA=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-HkY/ueMntnr2loHI/qQbYwrBnVrVrWLVE9P3W1+4GHo=",
       "Microsoft.Extensions.Configuration.Abstractions.wasm": "sha256-XR+WUfg8LtnrwdXFBnV+qO3ROyp6cYCfl1AZajIAheM=",
       "Microsoft.Extensions.Configuration.Json.wasm": "sha256-3UBRwvCkKtraRUarsIBDS05tA2rRm1leCB6EDfyVjeA=",
